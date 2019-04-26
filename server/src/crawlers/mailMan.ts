@@ -3,7 +3,9 @@ import fetch from 'node-fetch';
 
 import { IRedditScrape, IServerResponse } from '../utils/serverDictionary';
 
-const sendToMongo: Function = async (moviesArray: IRedditScrape[]): any =>
+const sendToMongo: Function = async (
+  moviesArray: IRedditScrape[]
+): Promise<any> =>
   await fetch('http://localhost:4000/movieDump', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
