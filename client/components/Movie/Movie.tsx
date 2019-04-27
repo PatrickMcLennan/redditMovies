@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { StyledFigure } from './Movie.style';
+
 import { IMovie } from '../../utils/clientDictionary';
 
 interface IState {
@@ -17,14 +19,18 @@ class Movie extends React.Component<IMovie, IState> {
 
   render(): JSX.Element {
     const { movieTitle, movieHref, movieThumbnail } = this.props;
+    const { jumboTron } = this.state;
     return (
-      <figure onClick={this.theToggler}>
+      <StyledFigure onClick={this.theToggler} jumboTron={jumboTron}>
         <img src={movieThumbnail} alt={movieTitle} />
 
         <figcaption>
           <h3>{movieTitle}</h3>
+          {jumboTron && <a href={movieHref}>Watch Me</a>}
         </figcaption>
-      </figure>
+      </StyledFigure>
     );
   }
 }
+
+export default Movie;

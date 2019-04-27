@@ -10,9 +10,7 @@ class App extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <div>
-          <Grid />
-        </div>
+        <Grid />
       </ThemeProvider>
     );
   }
