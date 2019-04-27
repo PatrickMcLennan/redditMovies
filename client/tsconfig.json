@@ -12,9 +12,6 @@
     "target": "es5",
     "allowJs": true
   },
-  "linterOptions": {
-    "exclude": "src/utils/auth.ts"
-  },
   "include": ["src/**/*", "src/utils/index.d.ts"],
   "exclude": ["node_modules", ".vscode"]
 }
