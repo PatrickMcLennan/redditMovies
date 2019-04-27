@@ -1,5 +1,11 @@
 import * as React from 'react';
 
-const Backdrop: React.FunctionComponent = (): JSX.Element => {
-  return <div />;
+import { StyledDiv } from './Backdrop.style';
+
+interface IProps {
+  jumboTron: boolean;
+}
+
+const Backdrop: React.FunctionComponent<IProps> = (jumboTron): JSX.Element => {
+  return <StyledDiv jumboTron={jumboTron} />;
 };

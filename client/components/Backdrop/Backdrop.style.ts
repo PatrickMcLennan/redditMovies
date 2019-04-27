@@ -35,7 +35,13 @@ export const StyledDiv = styled.div`
     css`
       ${({ theme: { flexin } }: any) => flexin()}
       animation: ${animateIn} forwards;
-  animation-duration: .5s;
+      animation-duration: .5s;
 
+    `}
+
+  ${(props: IProps) =>
+    !props.jumboTron &&
+    css`
+      animationg: ${animateOut} forwards;
     `}
 `;
