@@ -12,6 +12,6 @@
     "target": "es5",
     "allowJs": true
   },
-  "include": ["src/**/*", "src/utils/index.d.ts"],
+  "include": ["client/**/*", "client/utils/index.d.ts"],
   "exclude": ["node_modules", ".vscode"]
 }

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -18,4 +18,12 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const theme = {};
+export const theme = {
+  flexin: (jc = 'center', ai = 'center', fd = 'row') =>
+    css`
+      display: flex;
+      justify-content: ${jc};
+      align-items: ${ai};
+      flex-direction: ${fd};
+    `
+};

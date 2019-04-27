@@ -1,7 +1,12 @@
 import * as React from 'react';
 
-class Grid extends React.Component {
+interface IProps {
+  theToggler: Function;
+}
+
+class Grid extends React.Component<IProps, {}> {
   render(): JSX.Element {
+    const { theToggler } = this.props;
     return (
       <div>
         <h1>hello from grid</h1>
