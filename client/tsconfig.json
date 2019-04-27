@@ -1,16 +1,20 @@
 {
   "compilerOptions": {
+    "lib": ["es5", "es6", "dom"],
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
     "module": "commonjs",
-    "removeComments": true,
     "noImplicitAny": true,
-    "esModuleInterop": true,
-    "target": "es5",
-    "moduleResolution": "node",
+    "outDir": "./dist",
+    "preserveConstEnums": true,
+    "removeComments": true,
     "sourceMap": true,
-    "outDir": "dist"
+    "target": "es5",
+    "allowJs": true
   },
-  "compileOnSave": true,
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", ".vscode"],
-  "lib": ["es2015"]
+  "linterOptions": {
+    "exclude": "src/utils/auth.ts"
+  },
+  "include": ["src/**/*", "src/utils/index.d.ts"],
+  "exclude": ["node_modules", ".vscode"]
 }

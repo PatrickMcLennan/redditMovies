@@ -11,11 +11,11 @@ afterEach(cleanup);
 const renderNav = () =>
   render(
     <ThemeProvider theme={theme}>
-      <Nav />
+      <Nav date={new Date()} />
     </ThemeProvider>
   );
 
-test('<Nav showMenu="false" />', () => {
+test('<Nav />', () => {
   const { getByTestId } = renderNav();
   const nav = getByTestId('nav');
   const logo = getByTestId('logo');
