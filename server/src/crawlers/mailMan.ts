@@ -1,13 +1,20 @@
 import reddit from './reddit';
 import fetch from 'node-fetch';
 
-import { IMovie, IServerResponse } from '../utils/serverDictionary';
+import {
+  IMovie,
+  IServerResponse,
+  IMovieDumpRequest
+} from '../utils/serverDictionary';
 
-const sendToMongo: Function = async (moviesArray: IMovie[]): Promise<any> =>
+const sendToMongo: Function = async (
+  movies: IMovieDumpRequest['movies'],
+  timestamp: IMovieDumpRequest['timestamp']
+): Promise<any> =>
   await fetch('http://localhost:4000/movieDump', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(moviesArray)
+    body: JSON.stringify(movies, timestamp)
   })
     .then((rawResponse: any) => rawResponse.json())
     .then(
@@ -18,6 +25,17 @@ const sendToMongo: Function = async (moviesArray: IMovie[]): Promise<any> =>
     );
 
 (async (): Promise<Function> => {
+  const now: Date = new Date();
+  const day: string = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ][now.getDay()];
+  const date = now.getDate();
   await reddit.initialize('fullmoviesongoogle');
   const resultsGoogle: IMovie[] = await reddit.getResults(10);
   console.log('Google subreddit scraped...');
@@ -27,5 +45,7 @@ const sendToMongo: Function = async (moviesArray: IMovie[]): Promise<any> =>
   console.log('Vimeo subreddit scraped...');
   console.log('Sending movie array to Mongo...');
 
-  return sendToMongo([...resultsGoogle, ...resultsVimeo]);
+  const timestamp: IMovieDumpRequest['timestamp'] = `${day} ${date}`;
+
+  return sendToMongo([...resultsGoogle, ...resultsVimeo], timestamp);
 })();

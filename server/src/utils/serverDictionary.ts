@@ -20,14 +20,24 @@ export interface IMovie {
   movieThumbnail: string;
 }
 
+export interface ITimestamp {
+  timestamp: string;
+}
+
+export interface ITimestampDocument extends Document {
+  timestamp: string;
+}
+
 export interface IMovieDocument extends Document {
   movies: IMovie[];
 }
 
 export interface IMovieDumpRequest extends Request {
-  movies: IMovie[];
+  movies: IMovieDocument[];
+  timestamp: ITimestampDocument;
 }
 
 export interface IGetMoviesResponse extends IServerResponse {
   movies: [];
+  timestamp: ITimestamp;
 }

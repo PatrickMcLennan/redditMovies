@@ -2,22 +2,23 @@ import {
   IMovieDumpRequest,
   IServerResponse,
   IMovieDocument,
-  Movie
+  Movie,
+  Timestamp
 } from '../utils';
 
 export const postMovieDump = async (
   req: IMovieDumpRequest,
   res: IServerResponse
 ) => {
-  const newMovies: IMovieDocument[] = req.body;
+  const { movies, timestamp }: IMovieDumpRequest = req.body;
 
-  const allMovies = await Movie.find({});
-  if (allMovies.length >= 1) {
-    await allMovies.forEach(
+  const oldMovies = await Movie.find({});
+  if (oldMovies.length >= 1) {
+    await oldMovies.forEach(
       (oldMovie: IMovieDocument): Promise<IMovieDocument> => oldMovie.remove()
     );
   }
-  newMovies.forEach(
+  movies.forEach(
     async (newMovie: IMovieDocument): Promise<IMovieDocument> => {
       return await new Movie(newMovie).save();
     }
