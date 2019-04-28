@@ -17,7 +17,8 @@ export const GlobalStyle = createGlobalStyle`
     position: relative;
     display: grid;
     align-self: stretch;
-    grid-template-rows: min-content minmax(85vh, min-content)
+    grid-template-rows: min-content minmax(85vh, min-content);
+    overflow-x: hidden;
   }
 `;
 

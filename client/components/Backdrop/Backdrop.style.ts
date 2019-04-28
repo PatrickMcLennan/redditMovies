@@ -23,7 +23,7 @@ const animateOut = keyframes`
 
 export const StyledDiv = styled.div`
   display: none;
-  position: relative;
+  position: absolute;
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.35);
