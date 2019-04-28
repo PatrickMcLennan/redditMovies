@@ -7,6 +7,8 @@ interface IProps {
 export const StyledFigure = styled.figure`
   ${({ theme: { flexin } }: any) => flexin('space-evenly', 'center', 'column')}
   padding: .3rem;
+  cursor: pointer;
+  border: 1px solid black;
 
   ${(props: IProps) =>
     props.jumboTron &&

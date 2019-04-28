@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import Movie from '../Movie/Movie';
+import { StyledDiv } from './Grid.style';
 import { IMovie } from '../../utils/clientDictionary';
 
 interface IProps {
@@ -14,13 +15,13 @@ class Grid extends React.Component<IProps, {}> {
   render(): JSX.Element {
     const { theToggler, movies, error, jumboTron } = this.props;
     return (
-      <div data-testid="grid">
+      <StyledDiv data-testid="grid">
         {movies.length >= 1 &&
           movies.map((movie: IMovie) => (
             <Movie
               onClick={() => theToggler(movie)}
               {...movie}
-              jumboTron={false}
+              jumboTron={jumboTron}
               key={Math.random()}
             />
           ))}
@@ -30,7 +31,7 @@ class Grid extends React.Component<IProps, {}> {
             again later.
           </h3>
         )}
-      </div>
+      </StyledDiv>
     );
   }
 }

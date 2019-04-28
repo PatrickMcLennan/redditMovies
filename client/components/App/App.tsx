@@ -6,6 +6,7 @@ import { GlobalStyle, theme } from '../../utils/globalStyles';
 import Grid from '../Grid/Grid';
 import Backdrop from '../Backdrop/Backdrop';
 import Movie from '../Movie/Movie';
+import Nav from '../Nav/Nav';
 import { emptyMovie } from '../../utils/testDummies';
 
 import {
@@ -73,30 +74,33 @@ class App extends React.Component<{}, IState> {
   };
 
   render(): JSX.Element {
-    const { error, jumboTron, currentMovie } = this.state;
+    const { error, jumboTron, currentMovie, timestamp } = this.state;
     const { movieTitle, movieHref, movieThumbnail } = currentMovie;
     return (
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Grid
-          theToggler={this.theToggler}
-          movies={this.state.movies}
-          error={error}
-          jumboTron={false}
-        />
-        {jumboTron && (
-          <Backdrop
-            jumboTron={jumboTron}
-            onClick={(): Function => this.theToggler(emptyMovie)}>
-            <Movie
-              movieTitle={movieTitle}
-              movieHref={movieHref}
-              movieThumbnail={movieThumbnail}
-              jumboTron={true}
-              onClick={(): Function => this.theToggler(emptyMovie)}
-            />
-          </Backdrop>
-        )}
+        <>
+          <GlobalStyle />
+          <Nav timestamp={timestamp} />
+          <Grid
+            theToggler={this.theToggler}
+            movies={this.state.movies}
+            error={error}
+            jumboTron={false}
+          />
+          {jumboTron && (
+            <Backdrop
+              jumboTron={jumboTron}
+              onClick={(): Function => this.theToggler(emptyMovie)}>
+              <Movie
+                movieTitle={movieTitle}
+                movieHref={movieHref}
+                movieThumbnail={movieThumbnail}
+                jumboTron={true}
+                onClick={(): Function => this.theToggler(emptyMovie)}
+              />
+            </Backdrop>
+          )}
+        </>
       </ThemeProvider>
     );
   }

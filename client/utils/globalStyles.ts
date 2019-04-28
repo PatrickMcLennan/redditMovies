@@ -14,7 +14,9 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   .root {
-    min-height: 100vh;
+    display: grid;
+    align-self: stretch;
+    grid-template-rows: min-content minmax(85vh, min-content)
   }
 `;
 

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledNav = styled.nav`
   ${({ theme: { flexin } }: any) => flexin('space-between')}
+  grid-area: 1 / 1 / 2 / -1;
   padding: 1rem;
 `;
 

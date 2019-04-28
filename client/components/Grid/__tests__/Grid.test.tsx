@@ -9,6 +9,7 @@ import Grid from '../Grid';
 import { emptyMovieArray } from '../../../utils/testDummies';
 
 const theToggler: Function = jest.fn();
+const jumboTron = false;
 
 afterEach(cleanup);
 
@@ -19,7 +20,7 @@ const renderGrid = () =>
         theToggler={theToggler}
         movies={emptyMovieArray}
         error={false}
-        jumboTron={false}
+        jumboTron={jumboTron}
       />
     </ThemeProvider>
   );
