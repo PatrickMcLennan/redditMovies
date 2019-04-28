@@ -4,7 +4,9 @@ import fetch from 'node-fetch';
 import {
   IMovie,
   IServerResponse,
-  IMovieDumpRequest
+  IMovieDumpRequest,
+  ITimestamp,
+  ITimestampDocument
 } from '../utils/serverDictionary';
 
 const sendToMongo: Function = async (
@@ -14,7 +16,7 @@ const sendToMongo: Function = async (
   await fetch('http://localhost:4000/movieDump', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(movies, timestamp)
+    body: JSON.stringify({ movies, timestamp })
   })
     .then((rawResponse: any) => rawResponse.json())
     .then(
@@ -45,7 +47,7 @@ const sendToMongo: Function = async (
   console.log('Vimeo subreddit scraped...');
   console.log('Sending movie array to Mongo...');
 
-  const timestamp: IMovieDumpRequest['timestamp'] = `${day} ${date}`;
+  const timestamp: ITimestampDocument['timestamp'] = `${day} ${date}`;
 
   return sendToMongo([...resultsGoogle, ...resultsVimeo], timestamp);
 })();

@@ -1,6 +1,7 @@
 import {
   IMovieDumpRequest,
   IServerResponse,
+  ITimestampDocument,
   IMovieDocument,
   Movie,
   Timestamp
@@ -12,7 +13,7 @@ export const postMovieDump = async (
 ) => {
   const { movies, timestamp }: IMovieDumpRequest = req.body;
 
-  const oldMovies = await Movie.find({});
+  const oldMovies: IMovieDocument[] = await Movie.find({});
   if (oldMovies.length >= 1) {
     await oldMovies.forEach(
       (oldMovie: IMovieDocument): Promise<IMovieDocument> => oldMovie.remove()
@@ -23,8 +24,15 @@ export const postMovieDump = async (
       return await new Movie(newMovie).save();
     }
   );
+
+  const oldTimestamp: ITimestampDocument = await Timestamp.findOne({});
+  if (oldTimestamp) {
+    oldTimestamp.remove();
+  }
+  const newTimestamp = await new Timestamp(timestamp).save();
+
   return res.send({
     success: true,
-    message: 'New movies have been saved successfully'
+    message: `The movies were updated on ${newTimestamp}`
   });
 };

@@ -11,12 +11,14 @@ import { emptyMovie } from '../../utils/testDummies';
 import {
   IMovie,
   IGetMoviesResponse,
-  IServerResponse
+  IServerResponse,
+  ITimestamp
 } from '../../utils/clientDictionary';
 
 interface IState {
   jumboTron: boolean;
   movies: IMovie[];
+  timestamp: ITimestamp;
   currentMovie: IMovie;
   lastUpdated: string;
   error: boolean;
@@ -26,6 +28,7 @@ class App extends React.Component<{}, IState> {
   state = {
     jumboTron: false,
     movies: [],
+    timestamp: '',
     currentMovie: {
       movieTitle: '',
       movieHref: '',
@@ -42,11 +45,12 @@ class App extends React.Component<{}, IState> {
           rawResponse.json()
       )
       .then(
-        ({ movies }: IGetMoviesResponse): void =>
+        ({ movies, timestamp }: IGetMoviesResponse): void =>
           this.setState(
             (prevState: IState): IState => ({
               ...prevState,
-              movies
+              movies,
+              timestamp
             })
           )
       )
