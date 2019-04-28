@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { StyledFigure } from './Movie.style';
+import { StyledFigure, StyledFigCaption, StyledImg } from './Movie.style';
 
 import { IMovie } from '../../utils/clientDictionary';
 
@@ -26,11 +26,11 @@ class Movie extends React.Component<IProps, IState> {
     const { jumboTron } = this.state;
     return (
       <StyledFigure onClick={this.theToggler} jumboTron={jumboTron}>
-        <img src={movieThumbnail} alt={movieTitle} />
-        <figcaption>
+        <StyledImg src={movieThumbnail} alt={movieTitle} />
+        <StyledFigCaption>
           <h3>{movieTitle}</h3>
           {jumboTron && <a href={movieHref}>Watch Me</a>}
-        </figcaption>
+        </StyledFigCaption>
       </StyledFigure>
     );
   }

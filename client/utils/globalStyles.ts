@@ -19,6 +19,11 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const theme = {
+  elevation: {
+    main: css`
+      box-shadow: 0.2rem 0.2rem 5px black;
+    `
+  },
   flexin: (jc = 'center', ai = 'center', fd = 'row') =>
     css`
       display: flex;
