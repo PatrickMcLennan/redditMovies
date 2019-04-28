@@ -4,6 +4,8 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, theme } from '../../utils/globalStyles';
 
 import Grid from '../Grid/Grid';
+import Backdrop from '../Backdrop/Backdrop';
+import Movie from '../Movie/Movie';
 
 import {
   IMovie,
@@ -22,13 +24,7 @@ interface IState {
 class App extends React.Component<{}, IState> {
   state = {
     jumboTron: false,
-    movies: [
-      {
-        movieTitle: 'fdffd',
-        movieHref: 'fd  we wc',
-        movieThumbnail: 'vdf c e e'
-      }
-    ],
+    movies: [],
     currentMovie: {
       movieTitle: '',
       movieHref: '',
@@ -72,7 +68,7 @@ class App extends React.Component<{}, IState> {
   };
 
   render(): JSX.Element {
-    const { error } = this.state;
+    const { error, jumboTron, currentMovie } = this.state;
     return (
       <ThemeProvider theme={theme}>
         <GlobalStyle />
@@ -81,6 +77,11 @@ class App extends React.Component<{}, IState> {
           movies={this.state.movies}
           error={error}
         />
+        {jumboTron && (
+          <Backdrop>
+            <Movie {...currentMovie} onClick={/>
+          </Backdrop>
+        )}
       </ThemeProvider>
     );
   }

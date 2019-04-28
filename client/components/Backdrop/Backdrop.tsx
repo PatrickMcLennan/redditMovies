@@ -7,5 +7,7 @@ interface IProps {
 }
 
 const Backdrop: React.FunctionComponent<IProps> = (jumboTron): JSX.Element => {
-  return <StyledDiv jumboTron={jumboTron} />;
+  return <StyledDiv data-testid="backdrop" jumboTron={jumboTron} />;
 };
+
+export default Backdrop;
