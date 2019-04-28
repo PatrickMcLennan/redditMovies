@@ -4,11 +4,15 @@ import { StyledFigure } from './Movie.style';
 
 import { IMovie } from '../../utils/clientDictionary';
 
+interface IProps extends IMovie {
+  onClick: Function;
+}
+
 interface IState {
   jumboTron: boolean;
 }
 
-class Movie extends React.Component<IMovie, IState> {
+class Movie extends React.Component<IProps, IState> {
   state = {
     jumboTron: false
   };
@@ -23,7 +27,6 @@ class Movie extends React.Component<IMovie, IState> {
     return (
       <StyledFigure onClick={this.theToggler} jumboTron={jumboTron}>
         <img src={movieThumbnail} alt={movieTitle} />
-
         <figcaption>
           <h3>{movieTitle}</h3>
           {jumboTron && <a href={movieHref}>Watch Me</a>}

@@ -54,10 +54,11 @@ class App extends React.Component<{}, IState> {
   };
 
   render(): JSX.Element {
+    const { movies } = this.state;
     return (
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Grid theToggler={this.theToggler} />
+        <Grid theToggler={this.theToggler} movies={movies} />
       </ThemeProvider>
     );
   }
