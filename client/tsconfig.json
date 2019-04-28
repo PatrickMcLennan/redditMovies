@@ -4,7 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "module": "commonjs",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "outDir": "./dist",
     "preserveConstEnums": true,
     "removeComments": true,

@@ -5,35 +5,34 @@ import { StyledFigure, StyledFigCaption, StyledImg } from './Movie.style';
 import { IMovie } from '../../utils/clientDictionary';
 
 interface IProps extends IMovie {
-  onClick: Function;
-}
-
-interface IState {
+  movieTitle: IMovie['movieTitle'];
+  movieHref: IMovie['movieHref'];
+  movieThumbnail: IMovie['movieThumbnail'];
+  key?: number;
   jumboTron: boolean;
+  onClick?: Function;
 }
 
-class Movie extends React.Component<IProps, IState> {
-  state = {
-    jumboTron: false
-  };
-
-  theToggler = (): void => {
-    return this.setState({ jumboTron: !this.state.jumboTron });
-  };
-
-  render(): JSX.Element {
-    const { movieTitle, movieHref, movieThumbnail } = this.props;
-    const { jumboTron } = this.state;
-    return (
-      <StyledFigure onClick={this.theToggler} jumboTron={jumboTron}>
-        <StyledImg src={movieThumbnail} alt={movieTitle} />
-        <StyledFigCaption>
-          <h3>{movieTitle}</h3>
-          {jumboTron && <a href={movieHref}>Watch Me</a>}
-        </StyledFigCaption>
-      </StyledFigure>
-    );
-  }
-}
+const Movie: React.FunctionComponent<IProps> = ({
+  movieTitle,
+  movieHref,
+  movieThumbnail,
+  jumboTron
+}): JSX.Element => (
+  <StyledFigure
+    data-testid="movie"
+    onClick={this.theToggler}
+    jumboTron={jumboTron}>
+    <StyledImg data-testid="movie__img" src={movieThumbnail} alt={movieTitle} />
+    <StyledFigCaption data-testid="movie__figcaption">
+      <h3 data-testid="movie__h3">{movieTitle}</h3>
+      {jumboTron && (
+        <a data-testid="movie__a" href={movieHref}>
+          Watch Me
+        </a>
+      )}
+    </StyledFigCaption>
+  </StyledFigure>
+);
 
 export default Movie;

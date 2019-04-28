@@ -6,12 +6,14 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from '../../../utils/globalStyles';
 import Backdrop from '../Backdrop';
 
+const theToggler: Function = jest.fn();
+
 afterEach(cleanup);
 
 const renderBackdrop = () =>
   render(
     <ThemeProvider theme={theme}>
-      <Backdrop jumboTron={true} />
+      <Backdrop jumboTron={true} onClick={theToggler} />
     </ThemeProvider>
   );
 

@@ -13,10 +13,14 @@ class Grid extends React.Component<IProps, {}> {
   render(): JSX.Element {
     const { theToggler, movies, error } = this.props;
     return (
-      <div>
+      <div data-testid="grid">
         {movies.length >= 1 &&
           movies.map((movie: IMovie) => (
-            <Movie onClick={() => theToggler(movie)} {...movie} />
+            <Movie
+              onClick={() => theToggler(movie)}
+              {...movie}
+              key={Math.random()}
+            />
           ))}
         {error && (
           <h3>

@@ -4,6 +4,7 @@ import { StyledDiv } from './Backdrop.style';
 
 interface IProps {
   jumboTron: boolean;
+  onClick: Function;
 }
 
 const Backdrop: React.FunctionComponent<IProps> = (jumboTron): JSX.Element => {

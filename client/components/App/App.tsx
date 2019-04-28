@@ -6,7 +6,7 @@ import { GlobalStyle, theme } from '../../utils/globalStyles';
 import Grid from '../Grid/Grid';
 import Backdrop from '../Backdrop/Backdrop';
 import Movie from '../Movie/Movie';
-import { emptyMovie } from '../../utils/emptyMovie';
+import { emptyMovie } from '../../utils/testDummies';
 
 import {
   IMovie,
@@ -16,7 +16,7 @@ import {
 
 interface IState {
   jumboTron: boolean;
-  movies?: IMovie[];
+  movies: IMovie[];
   currentMovie: IMovie;
   lastUpdated: string;
   error: boolean;
@@ -25,6 +25,7 @@ interface IState {
 class App extends React.Component<{}, IState> {
   state = {
     jumboTron: false,
+    movies: [],
     currentMovie: {
       movieTitle: '',
       movieHref: '',
@@ -69,6 +70,7 @@ class App extends React.Component<{}, IState> {
 
   render(): JSX.Element {
     const { error, jumboTron, currentMovie } = this.state;
+    const { movieTitle, movieHref, movieThumbnail } = currentMovie;
     return (
       <ThemeProvider theme={theme}>
         <GlobalStyle />
@@ -78,10 +80,15 @@ class App extends React.Component<{}, IState> {
           error={error}
         />
         {jumboTron && (
-          <Backdrop jumboTron={jumboTron}>
+          <Backdrop
+            jumboTron={jumboTron}
+            onClick={(): Function => this.theToggler(emptyMovie)}>
             <Movie
-              {...currentMovie}
-              onClick={() => this.theToggler(emptyMovie)}
+              movieTitle={movieTitle}
+              movieHref={movieHref}
+              movieThumbnail={movieThumbnail}
+              jumboTron={true}
+              onClick={(): Function => this.theToggler(emptyMovie)}
             />
           </Backdrop>
         )}
