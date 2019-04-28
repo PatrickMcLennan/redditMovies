@@ -11,7 +11,7 @@ afterEach(cleanup);
 const renderBackdrop = () =>
   render(
     <ThemeProvider theme={theme}>
-      <Backdrop jumboTron={true} />
+      <Backdrop />
     </ThemeProvider>
   );
 
