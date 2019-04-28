@@ -1,7 +1,7 @@
-import { IRedditScrapeDocument } from './serverDictionary';
+import { IMovieDocument } from './serverDictionary';
 import { Schema, Model, model } from 'mongoose';
 
-const MovieSchema: Schema<IRedditScrapeDocument> = new Schema({
+const MovieSchema: Schema<IMovieDocument> = new Schema({
   movieTitle: {
     type: String,
     required: 'Each movie needs a title'
@@ -16,7 +16,7 @@ const MovieSchema: Schema<IRedditScrapeDocument> = new Schema({
   }
 });
 
-export const Movie: Model<IRedditScrapeDocument> = model<IRedditScrapeDocument>(
+export const Movie: Model<IMovieDocument> = model<IMovieDocument>(
   'Movie',
   MovieSchema
 );

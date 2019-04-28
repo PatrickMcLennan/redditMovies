@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 
-import { IRedditScrape } from '../utils/serverDictionary';
+import { IMovie } from '../utils/serverDictionary';
 
 const SUBREDDIT_URL: Function = (subReddit: string): string =>
   `https://old.reddit.com/r/${subReddit}/`;
@@ -17,31 +17,30 @@ const self: any = {
     );
   },
 
-  getResults: async (results: number): Promise<IRedditScrape[]> => {
+  getResults: async (results: number): Promise<IMovie[]> => {
     const elements: HTMLDivElement[] = await self.page.$$(
       '#siteTable > div[class*="thing"]'
     );
-    let movies: IRedditScrape[] = [];
+    let movies: IMovie[] = [];
 
     elements.forEach(
       async (element: any): Promise<any> => {
-        const movieTitle: IRedditScrape['movieTitle'] = await element.$eval(
+        const movieTitle: IMovie['movieTitle'] = await element.$eval(
           'p[class="title"]',
-          (node: HTMLParagraphElement): IRedditScrape['movieTitle'] =>
+          (node: HTMLParagraphElement): IMovie['movieTitle'] =>
             node.innerText
               .trim()
               .split(' ')
               .filter((word: string): boolean => word !== '(drive.google.com)')
               .join(' ')
         );
-        const movieHref: IRedditScrape['movieHref'] = await element.$eval(
+        const movieHref: IMovie['movieHref'] = await element.$eval(
           'a[data-event-action="title"]',
-          (node: HTMLAnchorElement): IRedditScrape['movieHref'] =>
-            node.href.trim()
+          (node: HTMLAnchorElement): IMovie['movieHref'] => node.href.trim()
         );
-        const movieThumbnail: IRedditScrape['movieThumbnail'] = await element.$eval(
+        const movieThumbnail: IMovie['movieThumbnail'] = await element.$eval(
           'a[data-event-action="thumbnail"]',
-          (node: HTMLAnchorElement): IRedditScrape['movieThumbnail'] | any => {
+          (node: HTMLAnchorElement): IMovie['movieThumbnail'] | any => {
             const children: any = node.childNodes;
 
             return children.length === 0

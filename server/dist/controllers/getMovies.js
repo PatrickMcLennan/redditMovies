@@ -37,35 +37,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var utils_1 = require("../utils");
-exports.postMovieDump = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
-    var newMovies, allMovies;
-    var _this = this;
+exports.getMovies = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+    var allMovies;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0:
-                newMovies = req.body;
-                return [4, utils_1.Movie.find({})];
+            case 0: return [4, utils_1.Movie.find({})];
             case 1:
                 allMovies = _a.sent();
-                if (!(allMovies.length >= 1)) return [3, 3];
-                return [4, allMovies.forEach(function (oldMovie) { return oldMovie.remove(); })];
-            case 2:
-                _a.sent();
-                _a.label = 3;
-            case 3:
-                newMovies.forEach(function (newMovie) { return __awaiter(_this, void 0, void 0, function () {
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4, new utils_1.Movie(newMovie).save()];
-                            case 1: return [2, _a.sent()];
-                        }
-                    });
-                }); });
                 return [2, res.send({
                         success: true,
-                        message: 'New movies have been saved successfully'
+                        message: 'All good',
+                        movies: allMovies
                     })];
         }
     });
 }); };
-//# sourceMappingURL=postMovieDump.js.map
+//# sourceMappingURL=getMovies.js.map

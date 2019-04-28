@@ -14,16 +14,20 @@ export interface IServerResponse extends Response {
   message: string;
 }
 
-export interface IRedditScrape {
+export interface IMovie {
   movieTitle: string;
   movieHref: string;
   movieThumbnail: string;
 }
 
-export interface IRedditScrapeDocument extends Document {
-  movies: IRedditScrape[];
+export interface IMovieDocument extends Document {
+  movies: IMovie[];
 }
 
 export interface IMovieDumpRequest extends Request {
-  movies: IRedditScrape[];
+  movies: IMovie[];
+}
+
+export interface IGetMoviesResponse extends IServerResponse {
+  movies: [];
 }

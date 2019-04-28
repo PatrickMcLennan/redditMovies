@@ -86,9 +86,7 @@ var self = {
                                     })];
                                 case 1:
                                     movieTitle = _a.sent();
-                                    return [4, element.$eval('a[data-event-action="title"]', function (node) {
-                                            return node.href.trim();
-                                        })];
+                                    return [4, element.$eval('a[data-event-action="title"]', function (node) { return node.href.trim(); })];
                                 case 2:
                                     movieHref = _a.sent();
                                     return [4, element.$eval('a[data-event-action="thumbnail"]', function (node) {

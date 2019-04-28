@@ -5,7 +5,7 @@ import cors from 'cors';
 import * as dotenv from 'dotenv';
 import { json } from 'body-parser';
 
-import { postMovieDump } from './controllers';
+import { postMovieDump, getMovies } from './controllers';
 
 import { mongoConfig } from './utils/configs';
 
@@ -18,6 +18,7 @@ app.use(cors());
 app.use(json());
 
 app.post('/movieDump', postMovieDump);
+app.get('/getMovies', getMovies);
 
 app.listen(
   PORT,

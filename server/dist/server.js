@@ -25,6 +25,7 @@ app.use(compression_1.default());
 app.use(cors_1.default());
 app.use(body_parser_1.json());
 app.post('/movieDump', controllers_1.postMovieDump);
+app.get('/getMovies', controllers_1.getMovies);
 app.listen(PORT, function () {
     mongoose_1.connect(process.env.MONGO, configs_1.mongoConfig)
         .then(function () { return console.log('Mongo Connected'); })
