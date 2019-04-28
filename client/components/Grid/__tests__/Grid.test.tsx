@@ -15,7 +15,12 @@ afterEach(cleanup);
 const renderGrid = () =>
   render(
     <ThemeProvider theme={theme}>
-      <Grid theToggler={theToggler} movies={emptyMovieArray} error={false} />
+      <Grid
+        theToggler={theToggler}
+        movies={emptyMovieArray}
+        error={false}
+        jumboTron={false}
+      />
     </ThemeProvider>
   );
 

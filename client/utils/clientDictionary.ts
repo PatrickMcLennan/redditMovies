@@ -15,5 +15,5 @@ export interface IServerResponse extends Response {
 
 export interface IGetMoviesResponse extends IServerResponse {
   movies: IMovie[];
-  timestamp: ITimestamp;
+  timestamp: ITimestamp['timestamp'];
 }

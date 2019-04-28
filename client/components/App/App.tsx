@@ -18,7 +18,7 @@ import {
 interface IState {
   jumboTron: boolean;
   movies: IMovie[];
-  timestamp: ITimestamp;
+  timestamp: ITimestamp['timestamp'];
   currentMovie: IMovie;
   lastUpdated: string;
   error: boolean;
@@ -82,6 +82,7 @@ class App extends React.Component<{}, IState> {
           theToggler={this.theToggler}
           movies={this.state.movies}
           error={error}
+          jumboTron={false}
         />
         {jumboTron && (
           <Backdrop

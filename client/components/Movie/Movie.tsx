@@ -19,10 +19,7 @@ const Movie: React.FunctionComponent<IProps> = ({
   movieThumbnail,
   jumboTron
 }): JSX.Element => (
-  <StyledFigure
-    data-testid="movie"
-    onClick={this.theToggler}
-    jumboTron={jumboTron}>
+  <StyledFigure data-testid="movie" onClick={this.theToggler}>
     <StyledImg data-testid="movie__img" src={movieThumbnail} alt={movieTitle} />
     <StyledFigCaption data-testid="movie__figcaption">
       <h3 data-testid="movie__h3">{movieTitle}</h3>

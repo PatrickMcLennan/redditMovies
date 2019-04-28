@@ -6,12 +6,13 @@ import { IMovie } from '../../utils/clientDictionary';
 interface IProps {
   theToggler: Function;
   movies: IMovie[];
+  jumboTron: boolean;
   error: boolean;
 }
 
 class Grid extends React.Component<IProps, {}> {
   render(): JSX.Element {
-    const { theToggler, movies, error } = this.props;
+    const { theToggler, movies, error, jumboTron } = this.props;
     return (
       <div data-testid="grid">
         {movies.length >= 1 &&
@@ -19,6 +20,7 @@ class Grid extends React.Component<IProps, {}> {
             <Movie
               onClick={() => theToggler(movie)}
               {...movie}
+              jumboTron={false}
               key={Math.random()}
             />
           ))}
