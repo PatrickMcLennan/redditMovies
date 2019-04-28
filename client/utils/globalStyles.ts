@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   .root {
+    position: relative;
     display: grid;
     align-self: stretch;
     grid-template-rows: min-content minmax(85vh, min-content)

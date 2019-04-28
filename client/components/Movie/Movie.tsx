@@ -11,20 +11,24 @@ interface IProps extends IMovie {
   key?: number;
   jumboTron: boolean;
   onClick?: Function;
+  theToggler: Function;
 }
 
 const Movie: React.FunctionComponent<IProps> = ({
   movieTitle,
   movieHref,
   movieThumbnail,
-  jumboTron
+  jumboTron,
+  theToggler
 }): JSX.Element => (
-  <StyledFigure data-testid="movie" onClick={this.theToggler}>
+  <StyledFigure
+    data-testid="movie"
+    onClick={() => theToggler({ movieTitle, movieHref, movieThumbnail })}>
     <StyledImg data-testid="movie__img" src={movieThumbnail} alt={movieTitle} />
     <StyledFigCaption data-testid="movie__figcaption">
       <h3 data-testid="movie__h3">{movieTitle}</h3>
       {jumboTron && (
-        <a data-testid="movie__a" href={movieHref}>
+        <a data-testid="movie__a" target="_blank" href={movieHref}>
           Watch Me
         </a>
       )}

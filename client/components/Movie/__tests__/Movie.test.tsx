@@ -20,6 +20,7 @@ const renderMovie = () =>
         movieThumbnail={movieThumbnail}
         movieHref={movieHref}
         jumboTron={false}
+        theToggler={theToggler}
       />
     </ThemeProvider>
   );

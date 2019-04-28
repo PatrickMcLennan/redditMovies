@@ -23,6 +23,7 @@ class Grid extends React.Component<IProps, {}> {
               {...movie}
               jumboTron={jumboTron}
               key={Math.random()}
+              theToggler={theToggler}
             />
           ))}
         {error && (

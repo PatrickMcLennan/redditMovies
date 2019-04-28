@@ -64,6 +64,7 @@ class App extends React.Component<{}, IState> {
   }
 
   theToggler: Function = (movie: IMovie): void => {
+    console.log('hello?');
     return this.setState(
       (prevState: IState): IState => ({
         ...prevState,
@@ -92,10 +93,11 @@ class App extends React.Component<{}, IState> {
               jumboTron={jumboTron}
               onClick={(): Function => this.theToggler(emptyMovie)}>
               <Movie
+                theToggler={this.theToggler}
                 movieTitle={movieTitle}
                 movieHref={movieHref}
                 movieThumbnail={movieThumbnail}
-                jumboTron={true}
+                jumboTron={jumboTron}
                 onClick={(): Function => this.theToggler(emptyMovie)}
               />
             </Backdrop>

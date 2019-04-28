@@ -8,10 +8,12 @@ import Nav from '../Nav';
 
 afterEach(cleanup);
 
+const timestamp = 'date';
+
 const renderNav = () =>
   render(
     <ThemeProvider theme={theme}>
-      <Nav date="date" />
+      <Nav timestamp={timestamp} />
     </ThemeProvider>
   );
 
