@@ -78,7 +78,7 @@ class App extends React.Component<{}, IState> {
           error={error}
         />
         {jumboTron && (
-          <Backdrop>
+          <Backdrop jumboTron={jumboTron}>
             <Movie
               {...currentMovie}
               onClick={() => this.theToggler(emptyMovie)}

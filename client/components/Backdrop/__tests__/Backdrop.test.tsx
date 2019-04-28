@@ -11,7 +11,7 @@ afterEach(cleanup);
 const renderBackdrop = () =>
   render(
     <ThemeProvider theme={theme}>
-      <Backdrop />
+      <Backdrop jumboTron={true} />
     </ThemeProvider>
   );
 
@@ -20,4 +20,7 @@ test('<Backdrop />', () => {
   const backdrop = getByTestId('backdrop');
 
   expect(backdrop).toBeInTheDocument();
+
+  expect(backdrop).toHaveStyleRule('height', '100vh');
+  expect(backdrop).toHaveStyleRule('width', '100vw');
 });
