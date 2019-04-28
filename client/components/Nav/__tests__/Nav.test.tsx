@@ -24,7 +24,9 @@ test('<Nav />', () => {
   // Content
   expect(nav).toContainElement(logo);
   expect(nav).toContainElement(timestamp);
+  expect(timestamp.textContent).toBe('Last Updated: date');
   // Styles
   expect(nav).toHaveStyleRule('display', 'flex');
   expect(nav).toHaveStyleRule('justify-content', 'space-between');
+  expect(nav).toHaveStyleRule('align-items', 'center');
 });
