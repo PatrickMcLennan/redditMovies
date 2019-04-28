@@ -1,16 +1,18 @@
 import * as React from 'react';
 
+import { StyledNav, StyledH1, StyledP } from './Nav.style';
+
 interface IProps {
-  date: Date;
+  date: string;
 }
 
 const Nav: React.FunctionComponent<IProps> = ({
   date
 }: IProps): JSX.Element => (
-  <nav>
-    <h1>redditMovies</h1>
-    <p>Last Updated: {date}</p>
-  </nav>
+  <StyledNav data-testid="nav">
+    <StyledH1 data-testid="logo">redditMovies</StyledH1>
+    <StyledP data-testid="timestamp">Last Updated: {date}</StyledP>
+  </StyledNav>
 );
 
 export default Nav;

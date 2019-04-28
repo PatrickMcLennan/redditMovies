@@ -6,17 +6,24 @@ import { IMovie } from '../../utils/clientDictionary';
 interface IProps {
   theToggler: Function;
   movies: IMovie[];
+  error: boolean;
 }
 
 class Grid extends React.Component<IProps, {}> {
   render(): JSX.Element {
-    const { theToggler, movies } = this.props;
+    const { theToggler, movies, error } = this.props;
     return (
       <div>
         {movies.length >= 1 &&
           movies.map((movie: IMovie) => (
             <Movie onClick={() => theToggler(movie)} {...movie} />
           ))}
+        {error && (
+          <h3>
+            Sorry - there was an issue connecting to the database. Please try
+            again later.
+          </h3>
+        )}
       </div>
     );
   }
