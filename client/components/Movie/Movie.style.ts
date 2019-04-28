@@ -16,6 +16,11 @@ export const StyledFigure = styled.figure`
     `}
 `;
 
+export const StyledFigCaption = styled.figcaption`
+  ${({ theme: { flexin } }: any) => flexin('center', 'center', 'column')}
+  text-align: center;
+`;
+
 export const StyledImg = styled.img`
   box-shadow: 0.2rem 0.2rem 5px black;
 `;
