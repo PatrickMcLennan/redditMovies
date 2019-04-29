@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { StyledDiv } from './Backdrop.style';
+import { emptyMovie } from '../../utils/testDummies';
 
 interface IProps {
   jumboTron: boolean;

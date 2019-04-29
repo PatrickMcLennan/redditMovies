@@ -23,12 +23,13 @@ const animateOut = keyframes`
 
 export const StyledDiv = styled.div`
   display: none;
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.35);
   z-index: 9;
   transform: translateX(100%);
+  cursor: pointer;
 
   ${(props: IProps) =>
     props.jumboTron &&
@@ -43,5 +44,6 @@ export const StyledDiv = styled.div`
     !props.jumboTron &&
     css`
       animationg: ${animateOut} forwards;
+      animation-duration: 0.5s;
     `}
 `;
